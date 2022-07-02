@@ -1,0 +1,20 @@
+.sidebar_wrapper {
+  background: rgb(203, 203, 203);
+  width: 300px;
+  padding: 80px 20px;
+}
+
+.menu_item {
+  &_link {
+    text-decoration: none;
+    color: black;
+  }
+  &_name {
+    line-height: 25px;
+    margin-bottom: 5px;
+    padding: 5px;
+    &:hover {
+      background: rgb(226, 226, 226);
+    }
+  }
+}
