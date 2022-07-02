@@ -21,10 +21,23 @@
     "sourceType": "module"
   },
   "plugins": ["react"],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"]
+      }
+    }
+  },
   "rules": {
     "import/prefer-default-export": "off",
+    "default-param-last": "off",
     "react/function-component-definition": "off",
+    "import/no-named-as-default": "off",        
+    "react/jsx-uses-react": "error", 
     "react/prop-types": "off",
-    "no-unused-vars": "warn"
+    "no-unused-vars": "warn",
+    "jsx-a11y/click-events-have-key-events" : "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "no-param-reassign": "off"
   }
 }

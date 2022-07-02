@@ -3,14 +3,16 @@ import { Link } from 'react-router-dom';
 import { sidebarConfig } from './SidebarConfig';
 import style from './index.module.scss';
 
-export const Sidebar = () => (
+export const SidebarMenu = () => (
   <div className={style.sidebar_wrapper}>
-    {sidebarConfig.map((pageLink) => (
-      <Link key={pageLink.id} to={pageLink.path}>
-        {pageLink.name}
-      </Link>
-    ))}
+    <ul className={style.sidebar_menu}>
+      {sidebarConfig.map((pageLink) => (
+        <Link key={pageLink.id} className={style.sidebar_menu_item__link} to={pageLink.path}>
+          <li className={style.sidebar_menu_item}>{pageLink.name}</li>
+        </Link>
+      ))}
+    </ul>
   </div>
 );
 
-export default Sidebar;
+export default SidebarMenu;
