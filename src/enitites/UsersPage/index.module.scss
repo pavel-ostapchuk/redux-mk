@@ -1,0 +1,17 @@
+.form_wrapper {
+  display: flex;
+  gap: 10px;
+}
+
+.users_list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.user_wrapper {
+  display: flex;
+}
+.user_name {
+  width: 200px;
+}
