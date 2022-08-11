@@ -1,0 +1,31 @@
+.film_cards_container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 90px;
+  max-width: 900px;
+  gap: 50px 30px;
+  flex-wrap: wrap;
+  font-size: 2rem;
+  line-height: 2.1rem;
+  margin: 0 auto;
+}
+
+@media (max-width: 700px) {
+  .film_cards_container {
+    justify-content: center;
+  }
+}
+
+.film_cards_container__title {
+  font-size: 30px;
+  line-height: 35px;
+}
+
+.film_cards_container__favourite_films {
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 25px;
+  margin-bottom: 50px;
+  border-radius: 5px;
+  transition: 0.2s;
+}
