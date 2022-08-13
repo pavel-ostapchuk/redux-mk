@@ -1,0 +1,29 @@
+.films_cards_container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 90px;
+  max-width: 900px;
+  gap: 50px 30px;
+  flex-wrap: wrap;
+  font-size: 2rem;
+  line-height: 2.1rem;
+  margin: 0 auto;
+}
+
+.film_cards_container__title {
+  font-size: 30px;
+  line-height: 35px;
+}
+
+.films_cards_container__favourite_films {
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 25px;
+  margin-bottom: 50px;
+  background-repeat: 5px;
+  transition: 0.2s;
+
+  &:hover {
+    background-color: rgb(197, 197, 197);
+  }
+}
