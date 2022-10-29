@@ -1,10 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addUserAsync, deleteUserAsync, fetchUsersAsync } from './async-actions';
-// import { FETCH_USERS, FETCH_USERS_FAILURE, FETCH_USERS_SUCCESS } from './async-actions';
+import { fetchUsersAsync } from './actions';
 
-// Vanilla reducer
+// Vanilla Redux
 // const initialState = {
-//   usersData: [],
+//   users: [],
 //   loading: false,
 //   error: null,
 // };
@@ -14,7 +13,7 @@ import { addUserAsync, deleteUserAsync, fetchUsersAsync } from './async-actions'
 //     case FETCH_USERS:
 //       return { ...state, loading: true };
 //     case FETCH_USERS_SUCCESS:
-//       return { ...state, loading: false, usersData: action.payload };
+//       return { ...state, loading: false, users: action.payload };
 //     case FETCH_USERS_FAILURE:
 //       return { ...state, loading: false, error: action.payload };
 //     default:
@@ -22,54 +21,46 @@ import { addUserAsync, deleteUserAsync, fetchUsersAsync } from './async-actions'
 //   }
 // };
 
-// ===============================================================
+// ===============
+
+// Redux-toolkit
 
 const initialState = {
-  usersData: [],
+  users: [],
   loading: false,
   error: null,
 };
 
-export const usersSlice = createSlice({
-  name: 'users',
+// export const UsersSlice = createSlice({
+//   name: 'Users',
+//   initialState,
+//   reducers: {
+//     fetchUsers(state) {
+//       return { ...state, loading: true };
+//     },
+//     fetchUsersSuccess(state, action) {
+//       return { ...state, loading: false, users: action.payload };
+//     },
+//     fetchUsersFailure(state, action) {
+//       return { ...state, loading: false, error: action.payload };
+//     },
+//   },
+// });
+
+export const UsersSlice = createSlice({
+  name: 'Users',
   initialState,
-  reducers: {},
   extraReducers: {
-    // Получение пользователей
     [fetchUsersAsync.pending.type]: (state) => {
       state.loading = true;
     },
-    [fetchUsersAsync.fulfilled.type]: (state, action) => {
+    [fetchUsersAsync.fulfilled.type]: (state, { payload }) => {
       state.loading = false;
-      state.usersData = action.payload;
+      state.users = payload;
     },
-    [fetchUsersAsync.rejected.type]: (state, action) => {
+    [fetchUsersAsync.rejected.type]: (state, { payload }) => {
       state.loading = false;
-      state.error = action.payload;
-    },
-
-    // Добавление пользователя
-    [addUserAsync.pending.type]: (state) => {
-      state.loading = true;
-    },
-    [addUserAsync.fulfilled.type]: (state, action) => {
-      state.loading = false;
-      state.usersData = [...state.usersData, action.payload];
-    },
-    [addUserAsync.rejected.type]: (state, action) => {
-      state.loading = false;
-      state.error = action.payload;
-    },
-    // Удаление пользователя
-    [deleteUserAsync.pending.type]: (state) => {
-      state.loading = true;
-    },
-    [deleteUserAsync.fulfilled.type]: (state) => {
-      state.loading = false;
-    },
-    [deleteUserAsync.rejected.type]: (state, action) => {
-      state.loading = false;
-      state.error = action.payload;
+      state.error = payload;
     },
   },
 });

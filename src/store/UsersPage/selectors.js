@@ -1,1 +1,1 @@
-export const getUsersStore = (store) => store.users;
+export const getUsersListSelector = (state) => state.users;

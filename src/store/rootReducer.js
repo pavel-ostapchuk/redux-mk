@@ -1,13 +1,24 @@
-const { configureStore } = require('@reduxjs/toolkit');
-const { combineReducers, createStore, applyMiddleware } = require('redux');
-const { composeWithDevTools } = require('redux-devtools-extension');
-const { default: thunk } = require('redux-thunk');
-const { UsersReducer, usersSlice } = require('./UsersPage/reducer');
+import { configureStore } from '@reduxjs/toolkit';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import thunk from 'redux-thunk';
+import { UsersReducer, UsersSlice } from './UsersPage/reducer';
 
-const rootReducer = combineReducers({
-  users: usersSlice.reducer,
-});
+// Vanilla Redux
+// const rootReducer = combineReducers({
+//   users: UsersReducer,
+// });
 
 // export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
-export const store = configureStore({ reducer: rootReducer });
+//=========
+
+// Redux-toolkit
+
+const rootReducer = combineReducers({
+  users: UsersSlice.reducer,
+});
+
+export const store = configureStore({
+  reducer: rootReducer,
+});

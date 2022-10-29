@@ -1,9 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import thunk from 'redux-thunk';
-// import { usersSlice } from './reducer';
-import { UsersService } from './users-service';
+// import { UsersSlice } from './reducer';
+import { UsersServices } from './users-service';
 
-// Vanilla Action + Action Creators
+// Vanilla Actions + Action Creators
 // export const FETCH_USERS = 'FETCH_USERS';
 // export const FETCH_USERS_SUCCESS = 'FETCH_USERS_SUCCESS';
 // export const FETCH_USERS_FAILURE = 'FETCH_USERS_FAILURE';
@@ -15,21 +14,24 @@ import { UsersService } from './users-service';
 // export const fetchUsersAsync = () => async (dispatch) => {
 //   try {
 //     dispatch(fetchUsers());
-//     const { data } = await UsersService.getUsers();
+//     const { data } = await UsersServices.getUsers();
 //     dispatch(fetchUsersSuccess(data));
 //   } catch (error) {
 //     console.error(error);
-//     dispatch(fetchUsersFailure('Упс, ошибка!'));
+//     dispatch(fetchUsersFailure('Ошибка!'));
 //   }
 // };
 
 // ==========================================
-// const { fetchUsers, fetchUsersSuccess, fetchUsersFailure } = usersSlice.actions;
+
+// Redux-toolkit
+
+// const { fetchUsers, fetchUsersSuccess, fetchUsersFailure } = UsersSlice.actions;
 
 // export const fetchUsersAsync = () => async (dispatch) => {
 //   try {
 //     dispatch(fetchUsers());
-//     const { data } = await UsersService.getUsers();
+//     const { data } = await UsersServices.getUsers();
 //     dispatch(fetchUsersSuccess(data));
 //   } catch (error) {
 //     console.error(error);
@@ -40,17 +42,18 @@ import { UsersService } from './users-service';
 // Получение пользователей
 export const fetchUsersAsync = createAsyncThunk('users/fetchUsers', async (_, thunkApi) => {
   try {
-    const { data } = await UsersService.getUsers();
+    const { data } = await UsersServices.getUsers();
     return data;
   } catch (error) {
-    return thunkApi.rejectWithValue('Ошибка! Не удалось получить данные!');
+    console.error(error);
+    return thunkApi.rejectWithValue('Ошибка!');
   }
 });
 
 // Добавление пользователя
 export const addUserAsync = createAsyncThunk('users/addUser', async (payload, thunkApi) => {
   try {
-    const { data } = await UsersService.addUser(payload);
+    const { data } = await UsersServices.addUser(payload);
     return data;
   } catch (error) {
     return thunkApi.rejectWithValue('Ошибка! Не удалось добавить пользователя');
@@ -60,7 +63,7 @@ export const addUserAsync = createAsyncThunk('users/addUser', async (payload, th
 // Удаление пользоватял
 export const deleteUserAsync = createAsyncThunk('users/deleteUser', async (payload, thunkApi) => {
   try {
-    const { data } = await UsersService.deleteUser(payload);
+    const { data } = await UsersServices.deleteUser(payload);
     return data;
   } catch (error) {
     return thunkApi.rejectWithValue('Ошибка! Не удалось удалить пользователя');

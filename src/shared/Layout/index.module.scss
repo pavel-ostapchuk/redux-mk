@@ -1,12 +1,7 @@
-.main_layout {
+.layout_wrapper {
   display: flex;
-  min-height: 100vh;
 }
 
-.content_wrapper {
-  width: 100%;
-}
-
-.section_wrapper {
-  padding: 20px;
+.layout_content {
+  padding: 10px;
 }

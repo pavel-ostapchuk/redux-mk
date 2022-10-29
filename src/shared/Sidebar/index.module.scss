@@ -1,0 +1,22 @@
+.sidebar_wrapper {
+  background-color: grey;
+  height: 100vh;
+  padding: 10px;
+}
+
+.sidebar__list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: black;
+  &_item_link {
+    text-decoration: none;
+  }
+  & li {
+    padding: 3px 5px;
+    color: black;
+    &:hover {
+      background-color: white;
+    }
+  }
+}

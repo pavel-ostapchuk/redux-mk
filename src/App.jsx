@@ -1,9 +1,9 @@
-import TodosPage from 'enitites/TodosPage';
-import UsersPage from 'enitites/UsersPage';
+import TodosPage from 'entities/TodosPage';
+import UsersPage from 'entities/UsersPage';
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Layout from 'shared/Layout';
-import './styles/index.scss';
+import './style/index.scss';
 
 const App = () => (
   <Layout>
